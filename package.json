@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "co-wechat": "^2.3.0",
     "echarts": "^3.8.5",
+    "koa": "^2.6.2",
     "less": "^2.7.3",
     "less-loader": "^4.1.0",
     "mint-ui": "^2.2.13",
@@ -20,7 +22,6 @@
     "vue-i18n": "^8.3.0",
     "vue-router": "^2.8.1",
     "vuex": "^2.5.0",
-    "wechat": "^2.1.0",
     "wechat-oauth": "^1.5.0",
     "winston": "^3.1.0",
     "winston-mongodb": "^4.0.3"
