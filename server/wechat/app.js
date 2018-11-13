@@ -8,7 +8,7 @@ const config = require('./config')
 const client = new OAuth(config.appid, config.appsecret, null, null, true);
 const app = new Koa();
 
-var url = client.getAuthorizeURL('http://wwww.baidu.com/', 'state', 'snsapi_base');
+var url = client.getAuthorizeURL('http://127.0.0.1:8080', 'state', 'snsapi_base');
 console.log(client, url)
 
 
@@ -33,17 +33,18 @@ app.use(async (ctx, next) => {
 
 
 app.use(wechat(config).middleware(async (message, ctx) => {
+    console.log('message:',message,'\nctx:',ctx)
     // 微信输入信息就是这个 message
-    if (message.FromUserName === 'diaosi') {
+    if (message.Content === 'diaosi') {
         // 回复屌丝(普通回复)
         return 'hehe';
-    } else if (message.FromUserName === 'text') {
+    } else if (message.Content === 'text') {
         //你也可以这样回复text类型的信息
         return {
             content: 'text object',
             type: 'text'
         };
-    } else if (message.FromUserName === 'hehe') {
+    } else if (message.Content === 'hehe') {
         // 回复一段音乐
         return {
             type: "music",
@@ -54,7 +55,7 @@ app.use(wechat(config).middleware(async (message, ctx) => {
                 hqMusicUrl: "http://mp3.com/xx.mp3"
             }
         };
-    } else if (message.FromUserName === 'kf') {
+    } else if (message.Content === 'kf') {
         // 转发到客服接口
         return {
             type: "customerService",
